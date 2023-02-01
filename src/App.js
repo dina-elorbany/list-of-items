@@ -42,7 +42,7 @@ const App = () => {
             <input
               value={input}
               name='value'
-              placeholder=''
+              placeholder={index}
               key={index}
               onChange={e => handleChange(e, index)}
             />
