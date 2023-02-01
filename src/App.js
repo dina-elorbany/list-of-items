@@ -15,23 +15,21 @@ const App = () => {
   const [resutls, setResutls] = useState([]);
 
   const addFields = () => {
-    inputs.length < maxNumber && setInputs(pre => [...pre, '']);
+    inputs.length < maxNumber && setInputs(previous => [...previous, '']);
   };
 
   const handleChange = (e, index) => {
-    const values = inputs.map((input, i) => {
-      if (index === i) {
-        return e.target.value;
-      } else {
-        return input;
-      }
-    });
+    const values = inputs.map((input, i) =>
+      index === i ? e.target.value : input
+    );
     setInputs(values);
   };
 
   const submit = () => {
-    setResutls([...inputs]);
     console.log(inputs);
+    setResutls([...inputs]);
+    // EMPTY VALUES AFTER SUBMITION
+    setInputs(['']);
   };
 
   return (
@@ -56,6 +54,7 @@ const App = () => {
           <button onClick={submit}>submit</button>
         </div>
       </div>
+
       <div className='list-result'>
         <h2> List Result </h2>
         <ul>
